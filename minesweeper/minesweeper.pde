@@ -15,7 +15,7 @@ void draw(){
       showMenu();
       break;
     case 1:
-      showGame();
+      showGameBoard();
       scene = (board.checkVictory()) ? 3 : scene;
       break;
     case 2:
@@ -37,7 +37,7 @@ void showMenu() {
   text("play", 200, 250);
 }
 
-void showGame() {
+void showGameBoard() {
   board.print();
 }
 

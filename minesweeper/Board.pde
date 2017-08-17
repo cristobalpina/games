@@ -23,10 +23,16 @@ class Board
     for(int y = 0; y < rows; y++){
       for(int x = 0; x < columns; x++){
         if(this.getBox(y, x).isFlagged()) {
+          //paint box
           fill(230);
           rect(70 + x*40,80 + y*40, 40, 40);
+          //Draw the flag
+          fill(0);
+          rect(80 + x*40,110 + y*40, 22.5, 3);
+          rect(85 + x*40,107 + y*40, 12.5, 3);
+          rect(89 + x*40,88 + y*40 , 2, 22);
           fill(255, 0, 0);
-          triangle(80 + x*40,100 + y*40, 90 + x*40, 100 + y*40, 85 + x*40, 85 + y*40);
+          triangle(80 + x*40,95 + y*40, 91 + x*40, 100 + y*40, 91 + x*40, 85 + y*40);
         }
         else if(this.getBox(y, x).isHidden()){
           fill(230);
