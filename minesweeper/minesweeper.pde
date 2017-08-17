@@ -1,10 +1,14 @@
 //Global variables
-int scene = 0; // 0 -> menu, 1 -> game, 2 -> ???
+int scene = 0; // 0 -> menu, 1 -> game, 2 -> gameover, 3 -> victory
 Board board = new Board(9, 9);
+PImage menuBackground;
+int startTime;
+int scoreTime;
 
 
 void setup() {
   size(500,450);
+  menuBackground = loadImage("minesweeper-500x450.jpg");
   board.generateBombs();
   board.checkNearBombs();
 }
@@ -28,23 +32,39 @@ void draw(){
 }
 
 void showMenu() {
+  tint(255, 30);
+  image(menuBackground, 0, 0);
   fill(255,0,0);
-  textSize(40);
-  text("Minesweeper", 130, 150);
+  textSize(50);
+  text("Minesweeper", 100, 150);
   fill(220);
   rect(150,200,200,80);
   fill(0);
+  textSize(40);
   text("play", 200, 250);
 }
 
 void showGameBoard() {
+  //Flags left
+  fill(0);
+  rect(70,20,120,50);
+  fill(255, 0, 0);
+  textSize(40);
+  text(board.bombs - board.flagsInBoard, 100,60);
+  //Time
+  fill(0);
+  rect(310,20,120,50);
+  fill(255,0,0);
+  textSize(40);
+  text((millis()- startTime)/1000, 320, 60);
   board.print();
 }
 
 void showGameOver() {
   background(0);
   fill(255, 0, 0);
-  text("Game Over", 150, 250);
+  textSize(80);
+  text("Game Over", 30, 250);
 }
 
 void showScore() {
@@ -52,13 +72,15 @@ void showScore() {
   fill(255, 255, 0);
   textSize(80);
   text("Congratz", 50,200);
-  
+  textSize(40);
+  text("Total Time: " + scoreTime, 100,300);
 }
 void mouseClicked(){
   switch(scene){
     case 0:
       if(mouseX >= 150 && mouseX <= 350 && mouseY >= 200 && mouseY <= 280){
         scene = 1;
+        startTime = millis();
       }
       break;
     case 1:

@@ -4,6 +4,7 @@ class Board
   int rows;
   int bombs;
   int hiddenBoxes;
+  int flagsInBoard;
   Box[][] boxes;
   
   Board(int rows, int columns) {
@@ -12,6 +13,7 @@ class Board
     this.bombs = 10;
     this.hiddenBoxes = rows*columns;
     this.boxes = new Box[rows][columns];
+    this.flagsInBoard = 0;
     for(int row = 0;row < rows; row++){
       for(int column = 0; column < columns; column++){
         boxes[row][column] = new Box(row, column);
@@ -99,6 +101,7 @@ class Board
   
   boolean checkVictory() {
     if(this.hiddenBoxes == this.bombs) {
+      scoreTime = (millis() - startTime)/1000;
       return true;
     }
     return false;

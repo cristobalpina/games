@@ -25,6 +25,7 @@ class Box
   }
   void setFlagged(boolean value) {
     this.flagged = value;
+    board.flagsInBoard += (value) ? 1 : -1;
   }
   boolean isFlagged() {
     return this.flagged;
