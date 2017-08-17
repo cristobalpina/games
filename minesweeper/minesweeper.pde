@@ -58,7 +58,6 @@ void mouseClicked(){
   switch(scene){
     case 0:
       if(mouseX >= 150 && mouseX <= 350 && mouseY >= 200 && mouseY <= 280){
-        println("game " + mouseX);
         scene = 1;
       }
       break;
@@ -66,7 +65,6 @@ void mouseClicked(){
       if(mouseX >= 70 && mouseX <= 430 && mouseY >= 80 && mouseY <= 440){
         int x = (mouseX - 70)/40;
         int y = (mouseY - 80)/40;
-        println(x + " " + y);
         Box box = board.getBox(y, x);
         if(mouseButton == RIGHT){
           box.setFlagged(!box.isFlagged());

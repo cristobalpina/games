@@ -25,7 +25,6 @@ class Box
   }
   void setFlagged(boolean value) {
     this.flagged = value;
-    println(value);
   }
   boolean isFlagged() {
     return this.flagged;

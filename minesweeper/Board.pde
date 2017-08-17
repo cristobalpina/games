@@ -148,7 +148,7 @@ class Board
         //W
         if(this.boxInBoard(row, column-1)) {
           Box w = this.getBox(row, column-1);
-          if(w.hasBomb() &&w.isHidden()){ 
+          if(!w.hasBomb() && w.isHidden()){
             w.setHidden(false);
             if(w.getNearBombs() == 0){
               boxList.add(w);
